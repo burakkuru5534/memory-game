@@ -30,9 +30,10 @@ function App() {
     const shuffledCards = [...cardImages, ...cardImages]
     .sort(()=> Math.random() - 0.5)
     .map((card)=> ({...card, id: Math.random()}) )
-    setCards(shuffledCards)
-    setTurns(0)
-
+    setCards(shuffledCards);
+    setTurns(0);
+    setChoiceOne(null);
+    setChoiceTwo(null);
   }
 
   useEffect(()=>{
@@ -69,6 +70,10 @@ function App() {
     setDisabled(false);
   }
 
+  useEffect(() => {
+    shuffleCards();
+  },[])
+
   return (
     <div className="App">
       <h1>Magic Match</h1>
@@ -86,6 +91,7 @@ function App() {
 
         ))}
       </div>
+      <p>Turns: {turns}</p>
 
 
     </div>
