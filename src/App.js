@@ -52,7 +52,9 @@ function App() {
 
         resetTurns();
       }else {
+       setTimeout(() => {
         resetTurns();
+       }, 500)
       }
     }
 
@@ -73,7 +75,12 @@ function App() {
       <div className="card-grid">
         {cards.map(card => (
 
-         <SingleCard card={card} key = {card.id} handleChoice = {handleChoice}/>
+         <SingleCard 
+         card={card}
+          key = {card.id}
+           handleChoice = {handleChoice}
+           flipped = {card === choiceOne || card === choiceTwo || card.matched}
+           />
 
         ))}
       </div>
